@@ -1,0 +1,13 @@
+# ple-harness v0.1
+# Submission target model: google-cloud/gemini-3.8-flash (one of the 8
+# Google-sponsored Stage 2 models). For local dev runs, use model_api
+# gemini/gemini-3.8-flash with a Google AI Studio free-tier key in local.env
+# (outside this repo — never committed), then switch back to the
+# google-cloud/<id> target before committing, and document the local model
+# + judge setup in the Writeup (Kaggle page switch rule, RULES.md §3).
+name: ple-harness
+model_api: google-cloud/gemini-3.8-flash
+install: >-
+  uv venv --python 3.12 /opt/harness/venv
+  && uv pip install --python /opt/harness/venv/bin/python -r {src}/requirements.txt
+serve: /opt/harness/venv/bin/python {src}/serve.py
